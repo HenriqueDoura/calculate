@@ -16,10 +16,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var secondNumberLbl: UILabel!
     @IBOutlet weak var operationLbl: UILabel!
     @IBOutlet weak var resultTxtField: UITextField!
+    @IBOutlet weak var acertosLbl: UILabel!
 
     let operations = ["+", "-", "*"]
     
     var result = 0
+    
+    var partidas = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,16 +35,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
             secondNumberLbl.alpha = 0
             operationLbl.alpha = 0
             resultTxtField.alpha = 0
+        
+            acertosLbl.text = "Você ainda não começou a jogar"
     }
     
     @IBAction func playBtnPressed(_ sender: Any) {
         generateCalculus()
         
-        nextBtn.alpha = 1
-        firstNumberLbl.alpha = 1
-        secondNumberLbl.alpha = 1
-        operationLbl.alpha = 1
-        resultTxtField.alpha = 1
+        UIView.animate(withDuration: 0.4) {
+            (sender as! UIButton).alpha = 0
+            self.nextBtn.alpha = 1
+            self.firstNumberLbl.alpha = 1
+            self.secondNumberLbl.alpha = 1
+            self.operationLbl.alpha = 1
+            self.resultTxtField.alpha = 1
+        }
+        
+        acertosLbl.text = "O jogo começou"
     }
     
     @IBAction func nextBtnPressed(_ sender: Any) {
@@ -51,16 +61,24 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (ok) in
                     self.generateCalculus()
                     self.resultTxtField.text = ""
+                    self.partidas.append(1)
+                    
+                     self.acertosLbl.text = "Acertos: \(self.partidas.filter({$0 == 1}).count)/\(self.partidas.count)"
                 }))
                 present(alert, animated: true, completion: nil)
             } else {
-                 let alert = UIAlertController(title: "Não foi dessa vez...", message: "Você errou! O resultado é \(result)", preferredStyle: .alert)
+                 let alert = UIAlertController(title: "Não foi dessa vez...", message: "Você errou!", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                 present(alert, animated: true, completion: nil)
+                
+                self.partidas.append(0)
             }
         } else {
             generateCalculus()
+            self.partidas.append(0)
         }
+        
+        acertosLbl.text = "Acertos: \(partidas.filter({$0 == 1}).count)/\(partidas.count)"
     }
     
     

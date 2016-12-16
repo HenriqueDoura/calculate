@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -90,9 +89,21 @@
                                     <action selector="nextBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lvu-bf-gUJ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acertos: 8/10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G46-wb-3i8">
+                                <rect key="frame" x="17" y="404" width="342" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="654-lR-dCC"/>
+                                    <constraint firstAttribute="width" constant="342" id="vFJ-Ea-LmS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="G46-wb-3i8" firstAttribute="top" secondItem="7yY-oY-bwH" secondAttribute="bottom" constant="102" id="0oa-Sf-p1l"/>
+                            <constraint firstItem="G46-wb-3i8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ejj-fC-xcr"/>
                             <constraint firstItem="rch-sE-UOd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="43" id="FNj-Z7-eCS"/>
                             <constraint firstItem="6Yk-x5-IfA" firstAttribute="top" secondItem="rch-sE-UOd" secondAttribute="bottom" constant="21" id="FUW-pc-6q4"/>
                             <constraint firstItem="rch-sE-UOd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="89" id="Qdh-Rh-uqD"/>
@@ -105,6 +116,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="acertosLbl" destination="G46-wb-3i8" id="JXe-iY-rXZ"/>
                         <outlet property="firstNumberLbl" destination="QRU-WN-gC7" id="ipC-sW-VX4"/>
                         <outlet property="nextBtn" destination="7yY-oY-bwH" id="Pka-sE-Fdq"/>
                         <outlet property="operationLbl" destination="c32-lX-gui" id="gbo-7p-6dd"/>
